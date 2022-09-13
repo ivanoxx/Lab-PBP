@@ -3,7 +3,6 @@
 [Link Menuju Aplikasi Heroku](http://dafi-lab1-pbp.herokuapp.com/)
 
 ## Bagan Django *Request & Response Cycle*
----
 ![Bagan Django *Request & Response Cycle*](https://cdn.discordapp.com/attachments/902951430153981993/1019066428806144081/unknown.png)
 1. *Client* mengirimkan *request* dan akan diproses oleh `urls.py` yang bertugas sebagai URL *router*.
    ```python
@@ -22,13 +21,11 @@
 7. *Response* diberikan kepada *client* berupa `html` dari URL yang di-*request*.
 
 ## Penggunaan *Virtual Environment*
----
 Setiap aplikasi/proyek Django kemungkinan besar akan membutuhkan *packages* atau *libraries* eksternal yang harus diinstal terlebih dahulu. Proyek Django yang berbeda terkadang membutuhkan *packages* dengan versi yang berbeda juga. Untuk memudahkan pengelolaan masing-masing proyek Django yang berbeda, kita bisa memanfaatkan *virtual environment*. Dengan menggunakan *virtual environment*, artinya kita membuat *environment* berbeda yang terisolasi dari *environment* lainnya. Dengan ini, perubahan yang dilakukan pada sebuah proyek Django tidak akan mempengaruhi proyek lainnya. Maka dari itu, setiap proyek Django lebih baik memiliki *virtual environment*-nya masing-masing. 
 
 Akan tetapi, proyek Django tentu tetap bisa dibangun tanpa menggunakan *virutal environment*. Hanya saja, akan sulit ketika terdapat banyak proyek dalam sebuah *environment*.Seperti yang sudah dikatakan sebelumnya, penggunaan *virtual environment* adalah agar kita lebih mudah mengelola proyek Django yang berbeda secara independen. 
 
 ## Implementasi
----
 1. Buat fungsi `show_katalog(request)` pada [`views.py`](katalog/views.py). 
    ```python
    def show_katalog(request):
