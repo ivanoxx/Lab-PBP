@@ -8,10 +8,24 @@ def show_mywatchList(request):
     context = {
         'mywatch_list': data_mywatchList,
         'nama': 'Dafi',
-        'student_id': '2106701564'
+        'student_id': '2106701564',
+        'message': bonus()
     }
     return render(request, "mywatchList.html", context)
 
+def bonus():
+    watched_list = WatchAttr.objects.all().values("watched")
+    watched, not_watched = 0, 0
+    for w in watched_list:
+        if w['watched'] == 'Yes':
+            watched += 1
+        else:
+            not_watched += 1
+
+    if watched >= not_watched:
+        return "Selamat, kamu sudah banyak menonton!"
+    return "Wah, kamu masih sedikit menonton!"
+    
 def show_xml(request):
     data = WatchAttr.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
