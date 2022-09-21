@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 1,
+        "fields": {
+            "watched": "Yes",
+            "title": "Interstellar",
+            "rating": 8.6,
+            "release_date": "November 7, 2014",
+            "review": "A team of explorers travel through a wormhole in an attempt to ensure humanity's survival."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 2,
+        "fields": {
+            "watched": "No",
+            "title": "Knives Out",
+            "rating": 7.9,
+            "release_date": "November 27, 2019",
+            "review": "Bringing back the classic whoddunit in amazingly entertaining fashion."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 3,
+        "fields": {
+            "watched": "Yes",
+            "title": "Arrival",
+            "rating": 7.9,
+            "release_date": "November 11, 2016",
+            "review": "Excellent, intelligent, just a terrific film."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 4,
+        "fields": {
+            "watched": "No",
+            "title": "One Piece Film: Red",
+            "rating": 7.3,
+            "release_date": "August 6, 2022",
+            "review": "A beautiful story contains amazing scenes with clarifying power scales in One Piece world."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 5,
+        "fields": {
+            "watched": "Yes",
+            "title": "Gonjiam: Haunted Asylum",
+            "rating": 6.3,
+            "release_date": "March 28, 2018",
+            "review": "Nothing that you haven't seen before, yet a competently-made POV horror flick!"
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 6,
+        "fields": {
+            "watched": "Yes",
+            "title": "Loki",
+            "rating": 8.2,
+            "release_date": "June 9, 2021",
+            "review": "A delightful diversion from the MCU as we know it, Loki successfully sees star Tom Hiddleston leap from beloved villain to endearing antihero -- with a little help from Owen Wilson -- in a series that's as off-kilter, charming, and vaguely dangerous as the demigod himself."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 7,
+        "fields": {
+            "watched": "Yes",
+            "title": "Guardian: The Lonely and Great God",
+            "rating": 8.6,
+            "release_date": "December 2, 2016",
+            "review": "A heart-pounding universal masterpiece."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 8,
+        "fields": {
+            "watched": "Yes",
+            "title": "Fullmetal Alchemist: Brotherhood",
+            "rating": 9.1,
+            "release_date": "April 5, 2009",
+            "review": "There's only one word to describe this series - EPIC."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 9,
+        "fields": {
+            "watched": "Yes",
+            "title": "Parasite",
+            "rating": 8.5,
+            "release_date": "November 8, 2019",
+            "review": "Meritocracy: it's metaphorical."
+        }
+    },
+    {
+        "model": "mywatchList.watchattr",
+        "pk": 10,
+        "fields": {
+            "watched": "No",
+            "title": "La La Land",
+            "rating": 8.0,
+            "release_date": "December 25, 2016",
+            "review": "Nostalgic, Colourful, Joyous CinemaScope Magic."
+        }
+    }
+]
