@@ -24,4 +24,24 @@ Selanjutnya, *data delivery* juga memungkinkan *developer* untuk menghemat ruang
         review = models.TextField()
     ```
     pada `mywatchlist/models.py`
-1. [HTML](http://dafi-lab1-pbp.herokuapp.com/mywatchlist/html)
+4. Data dari objek MyWatchList dapat dimasukkan pada `templates/mywatchlist.html` dan diisi sesuai dengan *fields*-nya.
+5. Untuk menyajikan data tersebut dalam tiga format, yaitu HTML, XML, dan JSON, pertama-tama buat fungsi yang akan mengembalikan *response* berupa XML, JSON, dan HTML. Tambahkan juga fungsi yang dapat mengembalikan *response* data dalam bentuk JSON ataupun XML bila ingin diakses menggunakan id.
+6. Selanjutnya, tambahkan  *path*-nya pada `mywatchlist/urls.py`
+    ```python 
+    ...
+    urlpatterns = [
+    path('', show_mywatchlist, name='show_mywatchlist'),
+    path('html/', show_mywatchlist, name='show_mywatchlist'),
+    path('xml/', show_xml, name='show_xml'),
+    path('json/', show_json, name='show_json'),
+    path('json/<int:id>', show_json_by_id, name='show_json_by_id'),
+    path('xml/<int:id>', show_xml_by_id, name='show_xml_by_id'),
+    ]
+    ...
+    ```
+7. Untuk deployment, karena saya menggunakan repositori tugas 2 pada tugas kali ini, maka tinggal lakukan `git add`, `commit`, dan `push` maka django-app akan ter-*deploy*.
+
+## Postman 
+![html](https://cdn.discordapp.com/attachments/902951430153981993/1022005070717522020/unknown.png)
+![xml](https://cdn.discordapp.com/attachments/902951430153981993/1022005115206512740/unknown.png)
+![json](https://cdn.discordapp.com/attachments/902951430153981993/1022005197037391922/unknown.png)
