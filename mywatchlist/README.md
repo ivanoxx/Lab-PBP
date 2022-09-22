@@ -1,8 +1,12 @@
 # Lab 2 - Dafi Nafidz Radhiyya (2106701564)
 
-[Link Menuju Aplikasi Heroku](http://dafi-lab1-pbp.herokuapp.com/)
+[Link Menuju Aplikasi Heroku](http://dafi-lab1-pbp.herokuapp.com/mywatchlist)
 
 ## Perbedaan JSON, XML dan HTML
+
+1. HTML: HTML merupakan seubah markup language bagi sebuah dokumen untuk ditampilkan pada web. Pada dasarnya, HTML menjadi landasan desain sebuah web-app.
+2. XML: Sedangkan, XML merupakan eXtensible markup language. Yang mana biasanya digunakan untuk mengirimkan data tanpa ada tampilan seperti HTML.
+3. JSON: JSON kurang lebih memiliki kegunaan yang hampir sama dengan XML, hanya saja memiliki sintaks yang berbeda.
 
 ## *Data Delivery*
 Seperti yang sudah dipelajari, aplikasi Django yang dibuat dapat memberikan *response* sesuai dengan *client request*. Contohnya, dengan menambahkan *path* `/wishlist` pada [link aplikasi](http://dafi-lab1-pbp.herokuapp.com/), maka akan dikembalikan *response* berupa halaman dalam format HTML. *Response* dalam bentuk halaman HTML tersebut merupakan salah satu contoh data delivery. Selain HTML, terdapat juga format lain seperti XML dan JSON. *Data delivery* tentunya sangat penting dalam pengimplementasian sebuah *platform*. Karena, data merupakan salah satu hal yang mungkin di-*request*.
