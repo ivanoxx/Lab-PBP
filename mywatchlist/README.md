@@ -28,7 +28,7 @@ Selanjutnya, *data delivery* juga memungkinkan *developer* untuk menghemat ruang
         review = models.TextField()
     ```
     pada `mywatchlist/models.py`
-4. Data dari objek MyWatchList dapat dimasukkan pada `templates/mywatchlist.html` dan diisi sesuai dengan *fields*-nya.
+4. Data dari objek MyWatchList dapat dimasukkan pada `fixtures/initial_mywatchlist_data.html` dan diisi sesuai dengan *fields*-nya.
 5. Untuk menyajikan data tersebut dalam tiga format, yaitu HTML, XML, dan JSON, pertama-tama buat fungsi yang akan mengembalikan *response* berupa XML, JSON, dan HTML. Tambahkan juga fungsi yang dapat mengembalikan *response* data dalam bentuk JSON ataupun XML bila ingin diakses menggunakan id.
 6. Selanjutnya, tambahkan  *path*-nya pada `mywatchlist/urls.py`
     ```python 
