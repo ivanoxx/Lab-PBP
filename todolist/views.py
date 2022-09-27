@@ -60,11 +60,16 @@ def create_task(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
-        now = datetime.datetime.now()
-        date = now.strftime("%d").rstrip("0")
-        month = now.strftime("%B")
-        year = now.strftime("%Y")
-        date = f"{month} {date}, {year}"
-        Task.objects.create(user=request.user, date=date, title=title, description=description)
-        return HttpResponseRedirect(reverse('todolist:show_todolist'))
+
+        if title != "" and description != "":
+            now = datetime.datetime.now()
+            date = now.strftime("%d").rstrip("0")
+            month = now.strftime("%B")
+            year = now.strftime("%Y")
+            date = f"{month} {date}, {year}"
+            Task.objects.create(user=request.user, date=date, title=title, description=description)
+            return HttpResponseRedirect(reverse('todolist:show_todolist'))
+
+        messages.info(request, 'Judul atau Deskripsi belum diisi!')
+
     return render(request, 'createtask.html')
