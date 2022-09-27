@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Tambah Task Baru</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "submit">
+
+    <h1>Tambah Task Baru</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Judul: </td>
+                <td><input type="text" name="title" placeholder="Judul" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Deskripsi: </td>
+                <td><input type="text" name="description" placeholder="Deskripsi" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn submit_btn" type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+
+</div>
+
+{% endblock content %}
