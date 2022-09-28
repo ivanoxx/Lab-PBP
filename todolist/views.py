@@ -1,4 +1,3 @@
-from pydoc import describe
 from django.shortcuts import render
 from todolist.models import Task
 from django.http import HttpResponseRedirect
@@ -18,10 +17,7 @@ def show_todolist(request):
         'username': request.user,
     }
     return render(request, "todolist.html", context)
-
-def create_task(request):
-    pass
-
+    
 def register(request):
     form = UserCreationForm()
 
