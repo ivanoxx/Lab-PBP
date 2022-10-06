@@ -26,28 +26,19 @@
             <a type="button" class="btn btn-outline-danger" href="{% url 'todolist:logout' %}">Logout</a>
         </div>
       </div>
-    </nav>  
-    <div class="table-responsive-sm">
-      <table class="table">
-        <thead>
-            <tr>
-            <th>Tanggal Pembuatan</th>
-            <th>Judul</th>
-            <th>Deskripsi</th>
-            </tr>
-        </thead>
-        <tbody>
-          {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-          {% for todolist in list_todolist %}
-            <tr>
-                <td>{{todolist.date}}</td>
-                <td>{{todolist.title}}</td>
-                <td>{{todolist.description}}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+    </nav> 
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for todolist in list_todolist %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">{{todolist.title}} ({{todolist.date}})</h5>
+                    <p class="card-text">{{todolist.description}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}    
+      </div> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
