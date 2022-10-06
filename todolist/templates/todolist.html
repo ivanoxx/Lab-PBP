@@ -30,10 +30,12 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         {% for todolist in list_todolist %}
             <div class="col">
-                <div class="card">
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title">{{todolist.title}} ({{todolist.date}})</h5>
+                    </div>
                     <div class="card-body">
-                    <h5 class="card-title">{{todolist.title}} ({{todolist.date}})</h5>
-                    <p class="card-text">{{todolist.description}}</p>
+                        <p class="card-text">{{todolist.description}}</p>
                     </div>
                 </div>
             </div>
