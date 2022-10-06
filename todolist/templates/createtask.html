@@ -1,43 +1,54 @@
 {% extends 'base.html' %}
 
-{% block meta %}
-<title>Tambah Task Baru</title>
-{% endblock meta %}
-
 {% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tambah Task Baru</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class = "submit">
+      
+          <h1>Tambah Task Baru</h1>
+      
+          <form method="POST" action="">
+              {% csrf_token %}
+              <table>
+                  <tr>
+                      <td>Judul: </td>
+                      <td><input type="text" name="title" placeholder="Judul" class="form-control"></td>
+                  </tr>
+                          
+                  <tr>
+                      <td>Deskripsi: </td>
+                      <td><input type="text" name="description" placeholder="Deskripsi" class="form-control"></td>
+                  </tr>
+      
+                  <tr>
+                      <td></td>
+                      <td>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                        <a  class="btn btn-secondary" href="{% url 'todolist:show_todolist' %}">Kembali</a>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+      
+          {% if messages %}
+              <ul>
+                  {% for message in messages %}
+                      <li>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+          {% endif %}     
+      
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
 
-<div class = "submit">
-
-    <h1>Tambah Task Baru</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Judul: </td>
-                <td><input type="text" name="title" placeholder="Judul" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Deskripsi: </td>
-                <td><input type="text" name="description" placeholder="Deskripsi" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn submit_btn" type="submit" value="Submit"><button><a href="{% url 'todolist:show_todolist' %}">Kembali</a></button></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-
-</div>
 
 {% endblock content %}
