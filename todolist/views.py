@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from todolist.models import Task
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.core import serializers
 import datetime
 
 @login_required(login_url='/todolist/login/')
@@ -18,6 +19,29 @@ def show_todolist(request):
     }
     return render(request, "todolist.html", context)
     
+def get_todolist_json(request):
+    todolist = Task.objects.filter(user=request.user).all()
+    return HttpResponse(serializers.serialize('json', todolist), content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+def add_task(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+
+        now = datetime.datetime.now()
+        date = now.strftime("%d").rstrip("0")
+        month = now.strftime("%B")
+        year = now.strftime("%Y")
+        date = f"{month} {date}, {year}"
+
+        new_task = Task(user=request.user, date=date, title=title, description=description)
+        new_task.save()
+
+        return HttpResponse(serializers.serialize("json", [new_task]), content_type="application/json")
+
+    return HttpResponseNotFound()
+
 def register(request):
     form = UserCreationForm()
 

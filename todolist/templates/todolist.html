@@ -22,25 +22,84 @@
         </a>
         <h3>Selamat datang, {{username}}!</h3>
         <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <a type="button" class="btn btn-outline-success" href="{% url 'todolist:create_task' %}"" >Tambah Task Baru</a>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addTaskModal" class="btn btn-outline-success">
+              Add Task
+            </button>
+
+            <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="title" class="col-form-label">Title:</label>
+                        <input type="text" class="form-control" id="title">
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submit" data-bs-dismiss="modal">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <a type="button" class="btn btn-outline-success" href="{% url 'todolist:create_task' %}"" >Add Task</a> -->
             <a type="button" class="btn btn-outline-danger" href="{% url 'todolist:logout' %}">Logout</a>
         </div>
       </div>
     </nav> 
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        {% for todolist in list_todolist %}
+
+    <div class="row row-cols-1 row-cols-md-2 g-4" id="cards">
+
+    </div> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      function showCards(data) {
+        $("#cards").empty();
+        for (let i = 0; i < data.length; i++) {
+          $("#cards").append(`
             <div class="col">
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header">
-                        <h5 class="card-title">{{todolist.title}} ({{todolist.date}})</h5>
+                        <h5 class="card-title">${data[i].fields.title} (${data[i].fields.date})</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{todolist.description}}</p>
+                        <p class="card-text">${data[i].fields.description}</p>
                     </div>
                 </div>
-            </div>
-        {% endfor %}    
-      </div> 
+            </div>`)
+        }
+      }
+
+      function addTask(event) {
+        $.post(
+          "{% url 'todolist:add_task' %}",
+          {
+            title: $("#title").val(),
+            description: $("#description").val(),
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+          },
+          function() {
+            $.get("/todolist/json", showCards)
+          },
+          "json"
+        );
+      }
+
+      $(document).ready(function(){
+        $.get("/todolist/json", showCards);
+        $("#submit").click(addTask);
+      })
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
 </html>
