@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from todolist.models import Task
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseNotFound, HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -41,6 +41,17 @@ def add_task(request):
         return HttpResponse(serializers.serialize("json", [new_task]), content_type="application/json")
 
     return HttpResponseNotFound()
+
+# @login_required(login_url='/todolist/login/')
+# def del_task(request):
+#     if request.method == 'DELETE':
+#         index = request.DELETE.get('index')
+
+#         Task.objects.filter(user=request.user, id=index).delete()
+#         return
+#         # return HttpResponse(serializers.serialize("json", Task.objects.filter(user=request.user).all()), content_type="application/json")
+
+#     return HttpResponseNotFound()
 
 def register(request):
     form = UserCreationForm()

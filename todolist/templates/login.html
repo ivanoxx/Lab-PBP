@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+<!-- https://epicbootstrap.com/snippets/login-form-dark -->
+
 {% block content %}
 
 <!doctype html>
@@ -8,44 +10,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
-      <div class = "login">
-      
-          <h1>Login</h1>
-      
-          <form method="POST" action="">
-              {% csrf_token %}
-              <table>
-                  <tr>
-                      <td>Username: </td>
-                      <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-                  </tr>
-                          
-                  <tr>
-                      <td>Password: </td>
-                      <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-                  </tr>
-      
-                  <tr>
-                      <td></td>
-                      <td><input class="btn btn-primary" type="submit" value="Login"></td>
-                  </tr>
-              </table>
-          </form>
-      
-          {% if messages %}
-              <ul>
-                  {% for message in messages %}
-                      <li>{{ message }}</li>
-                  {% endfor %}
-              </ul>
-          {% endif %}     
-              
-          Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
-      
-      </div>
+    <div class="login-dark">
+        <form method="POST">
+            {% csrf_token %}
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+            </div>
+            <a href="{% url 'todolist:register' %}" class="forgot">Belum mempunyai akun?</a>
+            {% if messages %}
+                  <ul>
+                      {% for message in messages %}
+                          <li>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+            {% endif %}
+        </form>
+    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>
